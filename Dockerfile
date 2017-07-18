@@ -1,12 +1,13 @@
 FROM centos:7.2.1511
 
-RUN yum install -y epel-release
-
-RUN yum install -y clang-analyzer cloc cmake cmake3 cppcheck doxygen gcc \
+RUN yum -y install epel-release && \
+    yum -y install clang-analyzer cloc cmake cmake3 cppcheck doxygen gcc \
         gcc-c++ git graphviz lcov make python2-pip valgrind && \
-        yum clean all
+    yum -y autoremove && \
+    yum clean all
 
-RUN pip install conan coverage flake8 gcovr
+RUN pip install conan coverage flake8 gcovr && \
+    rm -rf /root/.cache/pip/*
 
 ENV CONAN_USER_HOME=/conan
 
