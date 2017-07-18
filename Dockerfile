@@ -12,4 +12,6 @@ ENV CONAN_USER_HOME=/conan
 RUN mkdir /conan && \
     conan
 
+RUN yum -y update && yum clean all
+
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
