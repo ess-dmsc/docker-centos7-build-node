@@ -11,7 +11,7 @@ RUN pip install conan coverage flake8 gcovr && \
 
 ENV CONAN_USER_HOME=/conan
 
-RUN mkdir /conan && \
+RUN mkdir $CONAN_USER_HOME && \
     conan
 
 RUN yum -y install python-devel which && \
@@ -27,3 +27,5 @@ RUN yum -y install python-devel which && \
     rm -rf boost_1_64_0 boost_1_64_0.tar.gz
 
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
+
+RUN chmod -R a+rw $CONAN_USER_HOME
