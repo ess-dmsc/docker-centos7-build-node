@@ -28,4 +28,8 @@ RUN yum -y install python-devel which && \
 
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
 
-RUN chmod -R a+rw $CONAN_USER_HOME
+RUN adduser jenkins
+
+RUN chown -R jenkins $CONAN_USER_HOME/.conan
+
+USER jenkins
