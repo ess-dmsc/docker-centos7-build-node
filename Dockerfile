@@ -28,6 +28,10 @@ RUN yum -y install python-devel which && \
 
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
 
+RUN git clone https://github.com/ess-dmsc/utils.git && \
+    cp utils/clangformatdiff.sh /usr/local/bin && \
+    chmod +x /usr/local/bin/clangformatdiff.sh
+
 RUN adduser jenkins
 
 RUN chown -R jenkins $CONAN_USER_HOME/.conan
