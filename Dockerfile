@@ -33,3 +33,5 @@ RUN adduser jenkins
 RUN chown -R jenkins $CONAN_USER_HOME/.conan
 
 USER jenkins
+
+WORKDIR /home/jenkins
