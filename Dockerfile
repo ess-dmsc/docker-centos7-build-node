@@ -28,6 +28,10 @@ RUN yum -y install python-devel which && \
 
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
 
+RUN yum -y install findutils && \
+    yum -y autoremove && \
+    yum clean all
+
 RUN git clone https://github.com/ess-dmsc/utils.git && \
     cp utils/clangformatdiff.sh /usr/local/bin && \
     chmod +x /usr/local/bin/clangformatdiff.sh
