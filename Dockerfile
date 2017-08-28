@@ -28,7 +28,7 @@ RUN yum -y install python-devel which && \
 
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
 
-RUN yum -y install findutils && \
+RUN yum -y install findutils vim-common pcre-devel && \
     yum -y autoremove && \
     yum clean all
 
