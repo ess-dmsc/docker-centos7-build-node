@@ -1,18 +1,9 @@
 FROM centos
 
 RUN yum -y install epel-release && \
-    yum -y install clang-analyzer cloc cmake cmake3 cppcheck doxygen gcc \
-        gcc-c++ git graphviz lcov make python2-pip valgrind && \
+    yum -y install clang-analyzer cloc cmake cmake3 cppcheck doxygen findutils gcc gcc-c++ git graphviz lcov make python2-pip valgrind vim-common && \
     yum -y autoremove && \
     yum clean all
-
-RUN pip install conan coverage flake8 gcovr && \
-    rm -rf /root/.cache/pip/*
-
-ENV CONAN_USER_HOME=/conan
-
-RUN mkdir $CONAN_USER_HOME && \
-    conan
 
 RUN yum -y install python-devel which && \
     yum clean all && \
@@ -26,9 +17,18 @@ RUN yum -y install python-devel which && \
     cd .. && \
     rm -rf boost_1_64_0 boost_1_64_0.tar.gz
 
+RUN pip install conan==0.26.1 coverage==4.4.1 flake8==3.4.1 gcovr==3.3 && \
+    rm -rf /root/.cache/pip/*
+
+ENV CONAN_USER_HOME=/conan
+
+RUN mkdir $CONAN_USER_HOME && \
+    conan
+
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
 
-RUN yum -y install findutils vim-common pcre-devel && \
+# This is expected to be removed when a Conan package becomes available.
+RUN yum -y install pcre-devel && \
     yum -y autoremove && \
     yum clean all
 
