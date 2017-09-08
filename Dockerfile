@@ -33,8 +33,9 @@ RUN yum -y install pcre-devel && \
     yum clean all
 
 RUN git clone https://github.com/ess-dmsc/utils.git && \
-    cp utils/clangformatdiff.sh /usr/local/bin && \
-    chmod +x /usr/local/bin/clangformatdiff.sh
+    cd utils && \
+    git checkout 4816d9234e09a7b5fc1320f1c0e347107e7d52b5 && \
+    make install
 
 RUN adduser jenkins
 
