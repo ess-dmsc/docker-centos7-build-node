@@ -5,18 +5,6 @@ RUN yum -y install epel-release && \
     yum -y autoremove && \
     yum clean all
 
-RUN yum -y install python-devel which && \
-    yum clean all && \
-    cd && \
-    curl -LO https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz && \
-    tar xf boost_1_64_0.tar.gz && \
-    cd boost_1_64_0 && \
-    ./bootstrap.sh && \
-    ./b2 && \
-    ./b2 install && \
-    cd .. && \
-    rm -rf boost_1_64_0 boost_1_64_0.tar.gz
-
 RUN pip install conan==0.26.1 coverage==4.4.1 flake8==3.4.1 gcovr==3.3 && \
     rm -rf /root/.cache/pip/*
 
@@ -26,11 +14,6 @@ RUN mkdir $CONAN_USER_HOME && \
     conan
 
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
-
-# This is expected to be removed when a Conan package becomes available.
-RUN yum -y install pcre-devel && \
-    yum -y autoremove && \
-    yum clean all
 
 RUN git clone https://github.com/ess-dmsc/utils.git && \
     cd utils && \
