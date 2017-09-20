@@ -5,7 +5,7 @@ RUN yum -y install epel-release && \
     yum -y autoremove && \
     yum clean all
 
-RUN pip install conan==0.26.1 coverage==4.4.1 flake8==3.4.1 gcovr==3.3 && \
+RUN pip install conan==0.27.0 coverage==4.4.1 flake8==3.4.1 gcovr==3.3 && \
     rm -rf /root/.cache/pip/*
 
 ENV CONAN_USER_HOME=/conan
