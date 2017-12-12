@@ -1,4 +1,4 @@
-FROM centos
+FROM centos:7
 
 RUN yum -y install epel-release && \
     yum -y install bzip2 clang-analyzer cloc cmake cmake3 cppcheck doxygen findutils gcc gcc-c++ git graphviz lcov make mpich-3.2-devel python2-pip valgrind vim-common && \
