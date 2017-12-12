@@ -1,7 +1,7 @@
 FROM centos
 
 RUN yum -y install epel-release && \
-    yum -y install clang-analyzer cloc cmake cmake3 cppcheck doxygen findutils gcc gcc-c++ git graphviz lcov make python2-pip valgrind vim-common && \
+    yum -y install clang-analyzer cloc cmake cmake3 cppcheck doxygen findutils gcc gcc-c++ git graphviz lcov make mpich-3.2-devel python2-pip valgrind vim-common && \
     yum -y autoremove && \
     yum clean all
 
