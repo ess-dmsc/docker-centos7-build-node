@@ -1,8 +1,8 @@
 FROM centos:7
 
-RUN yum -y install epel-release && \
-    yum -y install bzip2 clang-analyzer cloc cmake cmake3 cppcheck doxygen findutils gcc gcc-c++ git graphviz \
-        libpcap-devel lcov make mpich-3.2-devel python2-pip valgrind vim-common autoconf automake libtool perl && \
+RUN yum -y install centos-release-scl epel-release && \
+    yum -y install bzip2 clang-analyzer cloc cmake cmake3 cppcheck devtoolset-6 doxygen findutils gcc gcc-c++ git graphviz \
+        libpcap-devel lcov make mpich-3.2-devel python2-pip rh-python35 valgrind vim-common autoconf automake libtool perl && \
     yum -y autoremove && \
     yum clean all
 
@@ -24,7 +24,7 @@ RUN conan install cmake_installer/3.10.0@conan/stable
 RUN git clone https://github.com/ess-dmsc/build-utils.git && \
     cd build-utils && \
     git checkout 3643fdc0ccbcdf83d9366fa619a44a60e7df9414 && \
-    make install
+    scl enable devtoolset-6 -- make install
 
 RUN adduser jenkins
 

@@ -9,3 +9,15 @@ Dockerfile for a CentOS 7 build node
 
 To create the official container image, substitute `<tag>` with
 _essdmscdm/centos7-build-node:<version>_.
+
+
+## Using GCC 6
+
+GCC 6 can be used by using `scl enable devtoolset-6 <command>`. The default
+Conan profile is configured to use GCC 6.
+
+
+## Python 3
+
+Python 3.5 is available with `scl enable rh-python35 <command>`. Note that Conan
+is installed for Python 2.
