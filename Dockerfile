@@ -2,7 +2,7 @@ FROM centos:7
 
 RUN yum -y install centos-release-scl epel-release && \
     yum -y install bzip2 clang-analyzer cloc cmake cmake3 cppcheck devtoolset-6 doxygen findutils gcc gcc-c++ git graphviz \
-        libpcap-devel lcov make mpich-3.2-devel python2-pip rh-python35 valgrind vim-common autoconf automake libtool perl && \
+        libpcap-devel lcov make mpich-3.2-devel python2-pip python-dev rh-python35 valgrind vim-common autoconf automake libtool perl && \
     yum -y autoremove && \
     yum clean all
 
