@@ -7,7 +7,7 @@ RUN yum -y install centos-release-scl epel-release && \
     yum clean all
 
 RUN pip install --force-reinstall pip==9.0.3 && \
-    pip install conan==1.3.3 coverage==4.4.2 flake8==3.5.0 gcovr==3.4 && \
+    pip install conan==1.3.3 coverage==4.4.2 flake8==3.5.0 gcovr==3.4 pytest==3.4.2 docker==3.4.1 docker-compose==1.2.0 confluent-kafka==0.11.4 flatbuffers==1.9 && \
     rm -rf /root/.cache/pip/*
 
 ENV CONAN_USER_HOME=/conan
