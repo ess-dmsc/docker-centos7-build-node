@@ -23,7 +23,7 @@ RUN conan install cmake_installer/3.10.0@conan/stable
 
 RUN git clone https://github.com/ess-dmsc/build-utils.git && \
     cd build-utils && \
-    git checkout 3643fdc0ccbcdf83d9366fa619a44a60e7df9414 && \
+    git checkout b0f62cf2f6dc128b99c1fc7c5b1f20712561585e && \
     scl enable devtoolset-6 -- make install
 
 RUN adduser jenkins
