@@ -3,7 +3,7 @@ FROM centos:7
 RUN yum -y install centos-release-scl epel-release && \
     yum -y install bzip2 clang-analyzer cloc cmake cmake3 cppcheck devtoolset-6 doxygen findutils gcc gcc-c++ git graphviz \
         libpcap-devel lcov make mpich-3.2-devel python2-pip python-dev rh-python35 valgrind vim-common autoconf automake \
-        libtool perl fuse fuse-libs fuseiso gvfs-fuse dkms dkms-fuse squashfs-tools && \
+        libtool perl fuse fuse-libs fuseiso gvfs-fuse dkms dkms-fuse squashfs-tools sudo && \
     yum -y autoremove && \
     yum clean all
 
@@ -19,6 +19,8 @@ RUN mkdir $CONAN_USER_HOME && \
 COPY files/registry.txt $CONAN_USER_HOME/.conan/
 
 COPY files/default_profile $CONAN_USER_HOME/.conan/profiles/default
+
+COPY files/sudoers /etc/sudoers
 
 RUN conan install cmake_installer/3.10.0@conan/stable
 
