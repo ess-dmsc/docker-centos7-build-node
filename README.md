@@ -19,5 +19,4 @@ Conan profile is configured to use GCC 6.
 
 ## Python 3
 
-Python 3.5 is available with `scl enable rh-python35 <command>`. Note that Conan
-is installed for Python 2.
+Python 3.6 is available through `python3.6`.

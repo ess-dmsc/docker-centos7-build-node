@@ -2,13 +2,13 @@ FROM centos:7
 
 RUN yum -y install centos-release-scl epel-release && \
     yum -y install bzip2 clang-analyzer cloc cmake cmake3 cppcheck devtoolset-6 doxygen findutils gcc gcc-c++ git graphviz \
-        libpcap-devel lcov make mpich-3.2-devel python2-pip python-dev rh-python35 valgrind vim-common autoconf automake \
+        libpcap-devel lcov make mpich-3.2-devel python36 python36-devel python36-pip valgrind vim-common autoconf automake \
         libtool perl fuse fuse-libs fuseiso gvfs-fuse dkms dkms-fuse squashfs-tools openssl-devel mesa-libGL && \
     yum -y autoremove && \
     yum clean all
 
-RUN pip install --force-reinstall pip==9.0.3 && \
-    pip install conan==1.12.0 coverage==4.4.2 flake8==3.5.0 gcovr==3.4 && \
+RUN pip3.6 install --force-reinstall pip==9.0.3 && \
+    pip3.6 install conan==1.12.0 coverage==4.4.2 flake8==3.5.0 gcovr==3.4 && \
     rm -rf /root/.cache/pip/*
 
 ENV CONAN_USER_HOME=/conan
