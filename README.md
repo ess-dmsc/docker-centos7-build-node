@@ -8,7 +8,7 @@ Dockerfile for a CentOS 7 build node
     $ docker build -t <tag> <path_to_dockerfile>
 
 To create the official container image, substitute `<tag>` with
-_essdmscdm/centos7-build-node:<version>_.
+_screamingudder/centos7-build-node:<version>_.
 
 
 ## Using GCC 6
