@@ -3,12 +3,13 @@ FROM centos:7
 RUN yum -y install centos-release-scl epel-release && \
     yum -y install bzip2 clang-analyzer cloc cmake3 cppcheck devtoolset-6 doxygen findutils gcc gcc-c++ git graphviz \
         flex lcov make mpich-3.2-devel python36 python36-devel python36-pip valgrind vim-common autoconf automake \
-        libtool perl fuse fuse-libs fuseiso gvfs-fuse dkms dkms-fuse squashfs-tools openssl-devel mesa-libGL qt5-qtbase-devel && \
+        libtool perl fuse fuse-libs fuseiso gvfs-fuse dkms dkms-fuse squashfs-tools openssl-devel mesa-libGL \
+        qt5-qtbase-devel libasound2 && \
     yum -y autoremove && \
     yum clean all
 
-RUN pip3.6 install --upgrade pip && \
-    pip3.6 install conan==1.20.5 coverage==4.4.2 flake8==3.5.0 gcovr==4.1 && \
+RUN python3.6 -m pip install --upgrade pip && \
+    python3.6 -m pip install conan==1.20.5 coverage==4.4.2 flake8==3.5.0 gcovr==4.1 && \
     rm -rf /root/.cache/pip/*
 
 ENV CONAN_USER_HOME=/conan
