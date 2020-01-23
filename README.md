@@ -9,12 +9,25 @@ Dockerfile for a CentOS 7 build node
 
 To create the official container image, substitute `<tag>` with
 _screamingudder/centos7-build-node:<version>_.
+  
+## Uploading image
 
+You might have to login using your docker credentials first by executing:
 
-## Using GCC 6
+```
+docker login
+```
 
-GCC 6 can be used by using `scl enable devtoolset-6 <command>`. The default
-Conan profile is configured to use GCC 6.
+After that, simply run:
+
+```
+docker push <tag>
+```
+
+## Using GCC 8
+
+GCC 8 can be used by using `scl enable devtoolset-8 <command>`. The default
+Conan profile is configured to use GCC 8.
 
 
 ## Python 3
