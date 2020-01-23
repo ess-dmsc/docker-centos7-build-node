@@ -24,10 +24,10 @@ After that, simply run:
 docker push <tag>
 ```
 
-## Using GCC 6
+## Using GCC 8
 
-GCC 6 can be used by using `scl enable devtoolset-6 <command>`. The default
-Conan profile is configured to use GCC 6.
+GCC 8 can be used by using `scl enable devtoolset-8 <command>`. The default
+Conan profile is configured to use GCC 8.
 
 
 ## Python 3
