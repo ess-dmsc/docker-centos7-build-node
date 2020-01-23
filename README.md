@@ -9,7 +9,20 @@ Dockerfile for a CentOS 7 build node
 
 To create the official container image, substitute `<tag>` with
 _screamingudder/centos7-build-node:<version>_.
+  
+## Uploading image
 
+You might have to login using your docker credentials first by executing:
+
+```
+docker login
+```
+
+After that, simply run:
+
+```
+docker push <tag>
+```
 
 ## Using GCC 6
 
