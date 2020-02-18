@@ -36,7 +36,7 @@ RUN git clone https://github.com/linux-test-project/lcov.git && \
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
 
 # Use ninja-build as ninja for consistency with our other linux images
-ln /usr/bin/ninja-build /usr/bin/ninja
+RUN ln /usr/bin/ninja-build /usr/bin/ninja
     
 RUN adduser jenkins
 RUN chown -R jenkins $CONAN_USER_HOME/.conan
