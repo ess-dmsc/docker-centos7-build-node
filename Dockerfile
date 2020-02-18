@@ -4,7 +4,7 @@ RUN yum -y install centos-release-scl epel-release && \
     yum -y install bzip2 clang-analyzer cloc cmake3 cppcheck devtoolset-8 doxygen findutils gcc gcc-c++ git graphviz \
         flex make mpich-3.2-devel python36 python36-devel python36-pip valgrind vim-common autoconf automake \
         libtool perl fuse fuse-libs fuseiso gvfs-fuse dkms dkms-fuse squashfs-tools openssl-devel mesa-libGL \
-        qt5-qtbase-devel && \
+        qt5-qtbase-devel ninja-build && \
     yum -y autoremove && \
     yum clean all
 
