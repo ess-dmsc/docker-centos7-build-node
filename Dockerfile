@@ -37,7 +37,11 @@ RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
 
 # Use ninja-build as ninja for consistency with our other linux images
 RUN ln /usr/bin/ninja-build /usr/bin/ninja
-    
+
+RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda.sh && \
+    sh miniconda.sh -b -p /opt/miniconda && \
+    /opt/miniconda/bin/conda update -n base -c defaults conda -y
+
 RUN adduser jenkins
 RUN chown -R jenkins $CONAN_USER_HOME/.conan
 RUN groupadd fuse
