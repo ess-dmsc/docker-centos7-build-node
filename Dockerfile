@@ -9,7 +9,7 @@ RUN yum -y install centos-release-scl epel-release && \
     yum clean all
 
 RUN python3.6 -m pip install --upgrade pip && \
-    python3.6 -m pip install conan==1.22.2 coverage==4.4.2 flake8==3.5.0 gcovr==4.1 && \
+    python3.6 -m pip install conan==1.27.0 coverage==4.4.2 flake8==3.5.0 gcovr==4.1 && \
     rm -rf /root/.cache/pip/*
 
 ENV CONAN_USER_HOME=/conan
