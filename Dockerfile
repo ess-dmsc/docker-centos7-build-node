@@ -4,7 +4,7 @@ RUN yum -y install centos-release-scl epel-release && \
     yum -y install bzip2 clang-analyzer cloc cmake3 cppcheck devtoolset-8 doxygen findutils gcc gcc-c++ git graphviz \
         flex make mpich-3.2-devel python36 python36-devel python36-pip valgrind vim-common autoconf automake \
         libtool perl fuse fuse-libs fuseiso gvfs-fuse dkms dkms-fuse squashfs-tools openssl-devel mesa-libGL \
-        qt5-qtbase-devel ninja-build && \
+        qt5-qtbase-devel ninja-build xorg-x11-server-devel && \
     yum -y autoremove && \
     yum clean all
 
@@ -34,9 +34,6 @@ RUN git clone https://github.com/linux-test-project/lcov.git && \
 # Calling cmake will use cmake v3.x
 # Allows us to use "cmake" command for v 3.x for consistency with our other linux images
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
-
-# Use ninja-build as ninja for consistency with our other linux images
-RUN ln /usr/bin/ninja-build /usr/bin/ninja
 
 RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda.sh && \
     sh miniconda.sh -b -p /opt/miniconda && \
