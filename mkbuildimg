@@ -4,5 +4,5 @@ cat Dockerfile files/Dockerfile_build > Dockerfile_tmp
 
 docker build -t buildcentos -f Dockerfile_tmp .
 
-echo "to run: docker run -i -t buildcentos repo branch"
-echo "ex: docker run -i -t buildcentos event-formation-unit master"
+echo "to run: docker run -i -t buildcentos repo branch target1 target2 ..."
+echo "ex: docker run -i -t buildcentos event-formation-unit master all unit_tests"

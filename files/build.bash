@@ -1,7 +1,15 @@
 #!/bin/bash
 
-repo=$1
-branch=$2
+repo=${1:-event-formation-unit}
+branch=${2:-master}
+shift 2
+targets=${*:-all}
+
+cpus=$(nproc)
+
+echo "building targets: $targets"
+echo "on branch: $branch"
+echo "of repo: $repo"
 
 function errexit() {
   echo "Error: $1"
@@ -23,8 +31,10 @@ cd build
 
 $sclcmd -- cmake .. || errexit "cmake failed"
 $sclcmd -- source activate_run.sh || errexit "activate_run failed"
-$sclcmd -- make -j 4 || errexit "make failed"
-$sclcmd -- make -j 4 unit_tests || errexit "make unit_tests failed"
+for target in $targets
+do
+  $sclcmd -- make -j $cpus $targets || errexit "make failed"
+done
 
 echo "done"
 bash -i

@@ -38,10 +38,21 @@ Python 3.6 is available through `python3.6`.
 ## Build ess-dmsc repos on CentOS
 This image is based on the Dockerfile with some additional commands and files.
 When run it clones the repo and branch specified as arguments and builds the
-project and attempts to build the unit_tests target.
+specified targets. If no targets are specified the 'all' target is used.
 
-To create the image:
+### To build the image:
 
 ```
-./mkbuildimg
+> mkbuildimg
+```
+
+### To run
+The syntax for running is
+```
+> docker run -i -t buildcentos repo branch target1 target2 ..."
+```
+here is a working example:
+
+```
+> docker run -i -t buildcentos event-formation-unit master all unit_tests"
 ```
