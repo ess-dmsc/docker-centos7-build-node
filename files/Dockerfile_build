@@ -1,0 +1,4 @@
+COPY files/build.bash /home/jenkins
+
+ENTRYPOINT ["/home/jenkins/build.bash"]
+CMD ["event-formation-unit", "master"]
