@@ -43,16 +43,34 @@ specified targets. If no targets are specified the 'all' target is used.
 ### To build the image:
 
 ```
-> mkbuildimg
+> ./mkbuildimg
 ```
 
 ### To run
 The syntax for running is
 ```
-> docker run -i -t buildcentos repo branch target1 target2 ..."
+> docker run -i -t buildcentos repo branch target1 target2 ...
 ```
 here is a working example:
 
 ```
-> docker run -i -t buildcentos event-formation-unit master all unit_tests"
+> docker run -i -t buildcentos event-formation-unit master all unit_tests
+```
+
+### Custom build command
+If you want a custom build command for your project put a bash script in your
+PATH that looks like this
+
+```
+> cat buildefu
+#!/bin/bash
+
+branch=$1
+
+docker run -i -t buildcentos event-formation-unit $branch all unit_tests
+```
+
+then from any directory you can start the CentOS build
+```
+> buildefu issue_233
 ```

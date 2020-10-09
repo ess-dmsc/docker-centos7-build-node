@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 repo=${1:-event-formation-unit}
 branch=${2:-master}
