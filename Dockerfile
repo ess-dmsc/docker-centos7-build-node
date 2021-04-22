@@ -41,6 +41,7 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
 
 RUN adduser jenkins
 RUN chown -R jenkins $CONAN_USER_HOME/.conan
+RUN conan config set general.revisions_enabled=True
 RUN groupadd fuse
 RUN usermod -a -G fuse jenkins
 
