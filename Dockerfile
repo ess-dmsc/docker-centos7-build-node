@@ -1,10 +1,13 @@
 FROM centos:7
 
 RUN yum -y install centos-release-scl epel-release && \
-    yum -y install bzip2 clang-analyzer cloc cmake3 cppcheck devtoolset-8 doxygen findutils gcc gcc-c++ git graphviz \
-        flex make mpich-3.2-devel python36 python36-devel python36-pip valgrind vim-common autoconf automake \
-        libtool perl fuse fuse-libs fuseiso gvfs-fuse dkms dkms-fuse squashfs-tools openssl-devel mesa-libGL \
-        qt5-qtbase-devel ninja-build xorg-x11-server-devel readline-devel root alsa-lib && \
+    yum -y install \
+      alsa-lib autoconf automake bzip2 clang-analyzer cloc cmake3 cppcheck \
+      devtoolset-8 dkms dkms-fuse doxygen findutils flex fuse fuse-libs fuseiso gcc \
+      gcc-c++ git graphviz gvfs-fuse libtool make mesa-libGL mpich-3.2-devel \
+      ninja-build openssl-devel perl python-setuptools python36 python36-devel \
+      python36-pip qt5-qtbase-devel readline-devel rh-python38 rh-python38-devel root \
+      squashfs-tools valgrind vim-common xorg-x11-server-devel && \
     yum -y autoremove && \
     yum clean all
 
