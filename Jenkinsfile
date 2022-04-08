@@ -33,7 +33,7 @@ node('docker') {
         // How to check if an image exists?
         sh "docker manifest inspect ${image_name}"
         image_exists = true
-      } catch {
+      } catch (e) {
         image_exists = false
       }
 
