@@ -1,4 +1,4 @@
-version = 6.1.0
+version = "6.1.0"
 
 node('docker') {
   // Delete workspace when build is done.
