@@ -20,7 +20,7 @@ node('docker') {
       image_version = "${version}-dev"
     }
 
-    image_name = "dockerregistry.esss.dk/ecdc_group/centos7-build-node:${image_version}"
+    image_name = "dockerregistry.esss.dk/ecdc_group/build-node-images/centos7-build-node:${image_version}"
     echo "${image_name}"
     sh "docker build -t ${image_name} ."
   }
@@ -28,18 +28,24 @@ node('docker') {
   stage("Push") {
     if (env.BRANCH_NAME == 'master') {
       // Don't overwrite image if it exists.
-      def image_exists
       try {
         // How to check if an image exists?
         sh "docker manifest inspect ${image_name}"
-        image_exists = true
+        error "Image ${image_name} already exists in registry, cannot push from master."
       } catch (e) {
-        image_exists = false
+        echo "Image ${image_name} not found in registry and will be pushed."
       }
-
-      echo "image_exists: ${image_exists}"
     } else {
-      echo "Not in master, will push image"
+      echo "Not in master, image will be pushed."
     }
+
+    withCredentials([string(
+      credentialsId: 'dmsc-gitlab-container-registry-read-write',
+      variable: 'GITLAB_TOKEN'
+    )]) {
+      sh 'docker login -u dm_jenkins -p $GITLAB_TOKEN dockerregistry.esss.dk'
+    }
+
+    sh "docker push ${image_name}"
   }
 }  // node
