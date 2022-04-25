@@ -39,13 +39,6 @@ node('docker') {
       echo "Not in master, image will be pushed."
     }
 
-    withCredentials([string(
-      credentialsId: 'dmsc-gitlab-container-registry-read-write',
-      variable: 'GITLAB_TOKEN'
-    )]) {
-      sh 'docker login -u dm_jenkins -p $GITLAB_TOKEN dockerregistry.esss.dk'
-    }
-
     sh "docker push ${image_name}"
   }
 }  // node
