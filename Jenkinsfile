@@ -1,5 +1,7 @@
 version = "6.1.0"
 
+properties([disableConcurrentBuilds()])
+
 node('docker') {
   // Delete workspace when build is done.
   cleanWs()
