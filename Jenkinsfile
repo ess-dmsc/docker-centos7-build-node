@@ -22,7 +22,12 @@ node('docker') {
 
     image_name = "dockerregistry.esss.dk/ecdc_group/build-node-images/centos7-build-node:${image_version}"
     echo "${image_name}"
-    sh "docker build --build-arg http_proxy=$http_proxy,https_proxy=$https_proxy -t ${image_name} ."
+    sh """
+      docker build \
+        --build-arg http_proxy=$http_proxy \
+        --build-arg https_proxy=$https_proxy \
+        -t ${image_name} .
+    """
   }
 
   stage("Push") {
