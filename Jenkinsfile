@@ -1,6 +1,9 @@
 version = "6.1.0"
 
-properties([disableConcurrentBuilds()])
+properties([
+  [$class: 'JiraProjectProperty'],
+  disableConcurrentBuilds(abortPrevious: true)
+])
 
 node('docker') {
   // Delete workspace when build is done.
