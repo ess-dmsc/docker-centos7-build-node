@@ -1,18 +1,22 @@
 FROM centos:7
 
 RUN yum -y install centos-release-scl epel-release && \
-    yum -y install \
-      alsa-lib autoconf automake bzip2 clang-analyzer cloc cmake3 cppcheck \
-      devtoolset-8 dkms dkms-fuse doxygen findutils flex fuse fuse-libs fuseiso gcc \
-      gcc-c++ git graphviz gvfs-fuse libtool make mesa-libGL mpich-3.2-devel \
-      ninja-build openssl-devel perl python-setuptools python36 python36-devel \
-      python36-pip qt5-qtbase-devel readline-devel rh-python38 rh-python38-devel root \
-      squashfs-tools valgrind vim-common xorg-x11-server-devel && \
+    yum -y install jq python36 && \
     yum -y autoremove && \
     yum clean all
 
 RUN python3.6 -m pip install --upgrade pip && \
-    python3.6 -m pip install conan==1.40.4 coverage==4.4.2 flake8==3.5.0 gcovr==4.1 && \
+    python3.6 -m pip install yq && \
+    rm -rf /root/.cache/pip/*
+
+# Read package list for yum and pip from file
+COPY files/packages.yml .
+
+RUN yum -y install $(yq -r '.yum_packages | @sh' packages.yml | sed -e "s/'//g") && \
+    yum -y autoremove && \
+    yum clean all
+
+RUN python3.6 -m pip install $(yq -r '.pip_packages | @sh' packages.yml | sed -e "s/'//g") && \
     rm -rf /root/.cache/pip/*
 
 ENV CONAN_USER_HOME=/conan
