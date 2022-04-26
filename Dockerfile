@@ -9,9 +9,13 @@ RUN python3.6 -m pip install --upgrade pip && \
     python3.6 -m pip install yq && \
     rm -rf /root/.cache/pip/*
 
-# Read package list for yum and pip from file
+# Read package list for yum and pip from file. The list is kept in a separate
+# file so we can also use it to configure other servers.
 COPY files/packages.yml .
 
+# Use yq to convert the list of packages from the YAML file into a
+# whitespace-separated list, and sed to remove single quotes from around the
+# package names.
 RUN yum -y install $(yq -r '.yum_packages | @sh' packages.yml | sed -e "s/'//g") && \
     yum -y autoremove && \
     yum clean all
@@ -38,8 +42,7 @@ RUN git clone https://github.com/linux-test-project/lcov.git && \
     git checkout v1.14 && \
     scl enable devtoolset-8 -- make install
 
-# Calling cmake will use cmake v3.x
-# Allows us to use "cmake" command for v 3.x for consistency with our other linux images
+# Allows us to use "cmake" command for v 3.x for consistency with our other linux images.
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
 
 RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda.sh && \

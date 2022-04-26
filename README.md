@@ -3,26 +3,15 @@
 Dockerfile for a CentOS 7 build node
 
 
-## Building
+## Building and pushing the image
 
-    $ docker build -t <tag> <path_to_dockerfile>
+Jenkins will automatically build and push the image to the container registry.
+When making changes, create a new branch and update the version before you
+push. The image pushed from the branch build will have the suffix `-dev` added
+to its name; the `-pr` suffix is added to pull request builds. After merging to
+master, the image with the standard name will be pushed. The master branch
+builds don't allow overwriting already existent images.
 
-To create the official container image, substitute `<tag>` with
-_screamingudder/centos7-build-node:<version>_.
-
-## Uploading image
-
-You might have to login using your docker credentials first by executing:
-
-```
-docker login
-```
-
-After that, simply run:
-
-```
-docker push <tag>
-```
 
 ## Using GCC 8
 
