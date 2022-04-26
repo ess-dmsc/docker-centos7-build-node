@@ -1,4 +1,4 @@
-@Library('ecdc-pipeline-test')
+@Library('ecdc-pipeline')
 import ecdcpipeline.ImageBuilder
 
 // Disable concurrent builds to avoid overwritting images in the registry.
