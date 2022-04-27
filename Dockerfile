@@ -28,7 +28,7 @@ ENV CONAN_USER_HOME=/conan
 RUN mkdir $CONAN_USER_HOME && \
     conan
 
-RUN conan config install http://github.com/ess-dmsc/conan-configuration.git
+RUN conan config install --args "-b 7696e110684968b6dc821a86f9d6d206cf384e16" http://github.com/ess-dmsc/conan-configuration.git
 
 COPY files/default_profile $CONAN_USER_HOME/.conan/profiles/default
 
