@@ -7,7 +7,7 @@ properties([
   disableConcurrentBuilds(abortPrevious: true)
 ])
 
-imageVersion = '6.2.2'
+imageVersion = '6.3.0'
 
 imageName = "dockerregistry.esss.dk/ecdc_group/build-node-images/centos7-build-node:${imageVersion}"
 
