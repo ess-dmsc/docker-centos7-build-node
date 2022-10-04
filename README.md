@@ -13,15 +13,16 @@ master, the image with the standard name will be pushed. The master branch
 builds don't allow overwriting already existent images.
 
 
-## Using GCC 8
+## Using GCC 11
 
-GCC 8 can be used by using `scl enable devtoolset-8 <command>`. The default
-Conan profile is configured to use GCC 8.
+GCC 11 can be used by running `scl enable devtoolset-8 <command>`. The default
+Conan profile is configured to use GCC 11.
 
 
 ## Python 3
 
-Python 3.6 is available through `python3.6`.
+Python 3.6 is available through `python3.6`; Python 3.8 can be used by running
+`scl enable rh-python38 <command>`.
 
 
 ## Build ess-dmsc repos on CentOS
