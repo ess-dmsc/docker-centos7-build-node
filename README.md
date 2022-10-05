@@ -15,7 +15,7 @@ builds don't allow overwriting already existent images.
 
 ## Using GCC 11
 
-GCC 11 can be used by running `scl enable devtoolset-8 <command>`. The default
+GCC 11 can be used by running `scl enable devtoolset-11 <command>`. The default
 Conan profile is configured to use GCC 11.
 
 
