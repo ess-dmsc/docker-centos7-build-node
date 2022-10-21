@@ -7,7 +7,9 @@ yum_packages:
   - cloc
   - cmake3
   - cppcheck
+  - cyrus-sasl-devel
   - devtoolset-8
+  - devtoolset-11
   - dkms
   - doxygen
   - findutils
@@ -42,7 +44,7 @@ yum_packages:
   - xorg-x11-server-devel
 
 pip_packages:
-  - conan==1.51.0
+  - conan==1.52.0
   - coverage==4.4.2
   - flake8==3.5.0
   - gcovr==4.1

@@ -39,7 +39,7 @@ COPY files/default_profile $CONAN_USER_HOME/.conan/profiles/default
 RUN git clone https://github.com/linux-test-project/lcov.git && \
     cd lcov && \
     git checkout v1.14 && \
-    scl enable devtoolset-8 -- make install
+    scl enable devtoolset-11 -- make install
 
 # Allows us to use "cmake" command for v 3.x for consistency with our other linux images.
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
