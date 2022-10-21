@@ -36,11 +36,6 @@ RUN git clone http://github.com/ess-dmsc/conan-configuration.git && \
 
 COPY files/default_profile $CONAN_USER_HOME/.conan/profiles/default
 
-RUN git clone https://github.com/ess-dmsc/build-utils.git && \
-    cd build-utils && \
-    git checkout c05ed046dd273a2b9090d41048d62b7d1ea6cdf3 && \
-    scl enable devtoolset-8 -- make install
-
 RUN git clone https://github.com/linux-test-project/lcov.git && \
     cd lcov && \
     git checkout v1.14 && \
