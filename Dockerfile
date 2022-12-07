@@ -44,11 +44,6 @@ RUN git clone https://github.com/linux-test-project/lcov.git && \
 # Allows us to use "cmake" command for v 3.x for consistency with our other linux images.
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
 
-RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda.sh && \
-    sh miniconda.sh -b -p /opt/miniconda && \
-    /opt/miniconda/bin/conda update -n base -c defaults conda -y && \
-    /opt/miniconda/bin/conda install -n base -c anaconda pip -y
-
 RUN adduser jenkins
 RUN chown -R jenkins $CONAN_USER_HOME/.conan
 RUN conan config set general.revisions_enabled=True
@@ -56,5 +51,14 @@ RUN groupadd fuse
 RUN usermod -a -G fuse jenkins
 
 USER jenkins
+
+RUN curl https://pyenv.run | bash
+
+ENV PYENV_ROOT="/home/jenkins/.pyenv"
+ENV PATH="${PATH}:$PYENV_ROOT/bin"
+
+RUN pyenv install 3.7
+RUN pyenv install 3.8
+RUN pyenv install 3.9
 
 WORKDIR /home/jenkins

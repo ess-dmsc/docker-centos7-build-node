@@ -28,6 +28,7 @@ yum_packages:
   - mpich-3.2-devel
   - ninja-build
   - openssl-devel
+  - patch
   - perl
   - python-setuptools
   - python36
