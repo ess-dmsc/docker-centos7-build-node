@@ -40,6 +40,7 @@ yum_packages:
   - rh-python38
   - rh-python38-python-devel
   - root
+  - sqlite-devel
   - squashfs-tools
   - valgrind
   - vim-common
