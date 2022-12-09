@@ -54,8 +54,8 @@ USER jenkins
 
 COPY files/install_pyenv.sh /home/jenkins/install_pyenv.sh
 
-RUN bash install_pyenv.sh && \
-    rm install_pyenv.sh
+RUN bash /home/jenkins/install_pyenv.sh && \
+    rm /home/jenkins/install_pyenv.sh
 
 ENV PYENV_ROOT="/home/jenkins/.pyenv"
 ENV PATH="${PATH}:$PYENV_ROOT/bin"
