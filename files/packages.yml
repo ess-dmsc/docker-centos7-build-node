@@ -22,6 +22,7 @@ yum_packages:
   - git
   - graphviz
   - gvfs-fuse
+  - libffi-devel
   - libtool
   - make
   - mesa-libGL
