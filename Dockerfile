@@ -52,7 +52,10 @@ RUN usermod -a -G fuse jenkins
 
 USER jenkins
 
-RUN curl https://pyenv.run | bash
+COPY files/install_pyenv.sh /home/jenkins/install_pyenv.sh
+
+RUN bash install_pyenv.sh && \
+    rm install_pyenv.sh
 
 ENV PYENV_ROOT="/home/jenkins/.pyenv"
 ENV PATH="${PATH}:$PYENV_ROOT/bin"
