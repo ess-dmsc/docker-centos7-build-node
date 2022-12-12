@@ -63,5 +63,6 @@ ENV PATH="${PATH}:$PYENV_ROOT/bin"
 RUN pyenv install 3.7
 RUN pyenv install 3.8
 RUN pyenv install 3.9
+RUN pyenv install 3.10
 
 WORKDIR /home/jenkins
