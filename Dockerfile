@@ -63,6 +63,8 @@ ENV PATH="${PATH}:$PYENV_ROOT/bin"
 RUN pyenv install 3.7
 RUN pyenv install 3.8
 RUN pyenv install 3.9
-RUN pyenv install 3.10
+RUN CPPFLAGS=-I/usr/include/openssl \
+    LDFLAGS=-L/usr/lib64 \
+    pyenv install 3.10
 
 WORKDIR /home/jenkins
