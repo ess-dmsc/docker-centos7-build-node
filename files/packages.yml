@@ -28,6 +28,8 @@ yum_packages:
   - mesa-libGL
   - mpich-3.2-devel
   - ninja-build
+  - openssl11
+  - openssl11-devel
   - openssl-devel
   - patch
   - perl
