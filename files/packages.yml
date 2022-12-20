@@ -2,7 +2,7 @@ yum_packages:
   - alsa-lib
   - autoconf
   - automake
-  - bzip2
+  - bzip2-devel
   - clang-analyzer
   - cloc
   - cmake3
@@ -22,12 +22,16 @@ yum_packages:
   - git
   - graphviz
   - gvfs-fuse
+  - libffi-devel
   - libtool
   - make
   - mesa-libGL
   - mpich-3.2-devel
   - ninja-build
+  - openssl11
+  - openssl11-devel
   - openssl-devel
+  - patch
   - perl
   - python-setuptools
   - python36
@@ -38,10 +42,14 @@ yum_packages:
   - rh-python38
   - rh-python38-python-devel
   - root
+  - sqlite-devel
   - squashfs-tools
+  - tk-devel
   - valgrind
   - vim-common
   - xorg-x11-server-devel
+  - xz-devel
+  - zlib-devel
 
 pip_packages:
   - conan==1.53.0
