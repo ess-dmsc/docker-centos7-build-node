@@ -33,6 +33,8 @@ yum_packages:
   - openssl-devel
   - patch
   - perl
+  - perl-IPC-Cmd
+  - perl-Digest-SHA
   - python-setuptools
   - python36
   - python36-devel
